@@ -72,10 +72,6 @@ source .env
 - [Terraform Documentation](https://www.terraform.io/docs/index.html)
 - [Udemy Course](https://www.udemy.com/course-dashboard-redirect/?course_id=5761444)
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgements
 
 Special thanks to the instructor and the Udemy platform for providing this comprehensive Terraform course.
