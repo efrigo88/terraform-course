@@ -7,6 +7,5 @@ find . -type f \( \
     -o -name ".terraform.tfstate.lock.info" \
     -o -name "terraform.tfstate.backup" \
     -o -name "terraform.tfstate" \
-    # deletes any plans we might have saved
     -o -name "myplan" \
 \) -exec rm -f {} +
