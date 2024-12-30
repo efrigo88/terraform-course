@@ -1,0 +1,4 @@
+# for illustration purposes only, not actively used
+bucket = "terraform-course-example-remote-backend"
+key    = "04-backends/dev/state.tfstate"
+region = "eu-west-1"
