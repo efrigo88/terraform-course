@@ -24,7 +24,7 @@ variable "ec2_volume_config" {
 
   default = {
     size = 10
-    type = "gp3"
+    type = "gp2" # will be overridden by the values in terraform.tfvars
   }
 }
 
