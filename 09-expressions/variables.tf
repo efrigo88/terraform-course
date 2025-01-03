@@ -5,5 +5,5 @@ variable "region" {
 }
 
 variable "numbers_list" {
-  type        = list(number)
+  type = list(number)
 }
