@@ -1,4 +1,5 @@
 variable "vpc_config" {
+  description = "Contains the VPC configuration, including the CIDR block and name."
   type = object({
     cidr_block = string
     name       = string
@@ -11,6 +12,11 @@ variable "vpc_config" {
 }
 
 variable "subnet_config" {
+  description = <<EOT
+  Accepts a map of subnet configurations, including the CIDR block, 
+  availability zone, and whether the subnet is public.
+  EOT
+
   type = map(object({
     cidr_block = string
     public     = optional(bool, false)
