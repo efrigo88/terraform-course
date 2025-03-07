@@ -25,3 +25,7 @@ variable "users" {
     role     = string
   }))
 }
+
+variable "user_to_output" {
+  type = string
+}
