@@ -1,6 +1,11 @@
-ec2_instance_count = 0
-
-ec2_instance_config_list = []
+subnet_config = {
+  default = {
+    cidr_block = "10.0.0.0/24"
+  }
+  subnet_1 = {
+    cidr_block = "10.0.1.0/24"
+  }
+}
 
 ec2_instance_config_map = {
   "ubuntu_1" = {
@@ -10,6 +15,6 @@ ec2_instance_config_map = {
   "nginx_1" = {
     instance_type = "t2.micro"
     ami           = "nginx"
-    subnet_index  = 1
+    subnet_name   = "subnet_1"
   }
 }
