@@ -8,7 +8,8 @@ terraform {
 }
 
 provider "aws" {
-  region = "eu-west-1"
+  profile = "admin"
+  region  = "eu-west-1"
 }
 
 resource "aws_vpc" "demo_vpc" {

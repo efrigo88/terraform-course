@@ -9,12 +9,14 @@ terraform {
 }
 
 provider "aws" {
-  region = "eu-west-1"
+  profile = "admin"
+  region  = "eu-west-1"
 }
 
 provider "aws" {
-  region = "us-east-1"
-  alias  = "us-east"
+  profile = "admin"
+  region  = "us-east-1"
+  alias   = "us-east"
 }
 
 resource "aws_s3_bucket" "eu_west_1" {

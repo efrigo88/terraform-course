@@ -51,6 +51,7 @@ module "networking" {
 
 ```hcl
 provider "aws" {
+  profile = "admin"
     region = "us-west-2"
 }
 
