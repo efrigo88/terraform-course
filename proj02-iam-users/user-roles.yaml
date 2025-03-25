@@ -1,0 +1,26 @@
+# structure by using yamldecode():
+# {
+#   users = [
+#     {
+#       username = "john"
+#       roles    = ["readonly", "developer"]
+#     },
+#     {
+#       username = "jane"
+#       roles    = ["admin", "auditor"]
+#     },
+#     {
+#       username = "emif"
+#       roles    = ["readonly"]
+#     }
+#   ]
+# }
+############################################
+
+users:
+- username: john
+  roles: [readonly, developer]
+- username: jane
+  roles: [admin, auditor]
+- username: emif
+  roles: [readonly]
