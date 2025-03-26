@@ -35,7 +35,8 @@ cd terraform-course
 ## Usage
 
 1. Initialize the Terraform configuration:
-Make sure you have the AWS CLI correctly installed and configured. Additionally, create a `.env` file with your environment variables and run the following command to export them:
+Make sure you have the AWS CLI correctly installed and configured. 
+Additionally, create a `.env` file with your environment variables (if you don't make use of profiles) and run the following command to export them:
 
 ```sh
 source .env
