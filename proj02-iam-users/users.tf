@@ -1,13 +1,13 @@
 locals {
-  users_from_yaml = yamldecode(file("${path.module}/user-roles.yaml"))
+  users_from_yaml = yamldecode(file("${path.module}/user-roles.yaml")).users
 
   users_map = {
-    for config in local.users_from_yaml.users : config.username => config.roles
+    for config in local.users_from_yaml : config.username => config.roles
   }
 }
 
 resource "aws_iam_user" "users" {
-  for_each = toset(local.users_from_yaml.users[*].username)
+  for_each = toset(local.users_from_yaml[*].username)
   name     = each.value
 }
 
@@ -32,13 +32,13 @@ resource "aws_iam_user_login_profile" "users" {
 #
 # Note: Terraform hides sensitive outputs by default, but these commands will display them.
 # If you reapply without recreating the login profiles, the passwords will show as null.
-output "passwords" {
-  sensitive = true
-  value = {
-    for user, user_login in aws_iam_user_login_profile.users : user => user_login.password
-  }
-}
+# output "passwords" {
+#   sensitive = true
+#   value = {
+#     for user, user_login in aws_iam_user_login_profile.users : user => user_login.password
+#   }
+# }
 
-output "users_map" {
-  value = local.users_map
-}
+# output "users_map" {
+#   value = local.users_map
+# }
