@@ -1,3 +1,7 @@
+# This Lambda function configuration was generated using:
+# terraform plan -generate-config-out=generated.tf
+# to import the manually created Lambda function from AWS
+
 import {
   to = aws_lambda_function.this
   id = "manually-created-lambda"
@@ -16,7 +20,7 @@ resource "aws_lambda_function" "this" {
   function_name    = "manually-created-lambda"
   handler          = "lambda_function.lambda_handler"
   package_type     = "Zip"
-  role             = "arn:aws:iam::140023373701:role/service-role/manually-created-lambda-role-6smistj6"
+  role             = aws_iam_role.lambda_role.arn
   runtime          = "python3.10"
   skip_destroy     = false
   source_code_hash = data.archive_file.lambda_zip.output_base64sha256
@@ -27,6 +31,6 @@ resource "aws_lambda_function" "this" {
 
   logging_config {
     log_format = "Text"
-    log_group  = "/aws/lambda/manually-created-lambda"
+    log_group  = aws_cloudwatch_log_group.lambda_logs.name
   }
 }
