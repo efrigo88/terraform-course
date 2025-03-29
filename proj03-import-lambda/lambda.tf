@@ -2,10 +2,10 @@
 # terraform plan -generate-config-out=generated.tf
 # to import the manually created Lambda function from AWS
 
-import {
-  to = aws_lambda_function.this
-  id = "manually-created-lambda"
-}
+# import {
+#   to = aws_lambda_function.this
+#   id = "manually-created-lambda"
+# }
 
 data "archive_file" "lambda_zip" {
   type        = "zip"
@@ -14,10 +14,10 @@ data "archive_file" "lambda_zip" {
 }
 
 resource "aws_lambda_function" "this" {
-  architectures    = ["x86_64"]
-  description      = "A starter AWS Lambda function."
-  filename         = data.archive_file.lambda_zip.output_path
   function_name    = "manually-created-lambda"
+  description      = "A starter AWS Lambda function."
+  architectures    = ["x86_64"]
+  filename         = data.archive_file.lambda_zip.output_path
   handler          = "lambda_function.lambda_handler"
   package_type     = "Zip"
   role             = aws_iam_role.lambda_role.arn
@@ -33,4 +33,9 @@ resource "aws_lambda_function" "this" {
     log_format = "Text"
     log_group  = aws_cloudwatch_log_group.lambda_logs.name
   }
+}
+
+resource "aws_lambda_function_url" "this" {
+  function_name      = aws_lambda_function.this.function_name
+  authorization_type = "NONE"
 }
