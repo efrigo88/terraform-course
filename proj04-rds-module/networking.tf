@@ -10,11 +10,6 @@ resource "aws_vpc" "custom" {
   }
 }
 
-moved {
-  from = aws_subnet.allowed
-  to   = aws_subnet.private1
-}
-
 resource "aws_subnet" "private1" {
   vpc_id     = aws_vpc.custom.id
   cidr_block = "10.0.0.0/24"
