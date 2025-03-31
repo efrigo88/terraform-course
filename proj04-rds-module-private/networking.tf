@@ -44,16 +44,6 @@ resource "aws_subnet" "public" {
   }
 }
 
-# For documentation. Not actively used.
-# resource "aws_subnet" "not_allowed" {
-#   vpc_id     = data.aws_vpc.default.id
-#   cidr_block = "172.31.128.0/24"
-
-#   tags = {
-#     Name = "subnet-default-vpc"
-#   }
-# }
-
 ########################################################
 # Security groups
 ########################################################
@@ -82,18 +72,4 @@ resource "aws_vpc_security_group_ingress_rule" "db" {
   from_port                    = 5432
   to_port                      = 5432
   ip_protocol                  = "tcp"
-}
-
-resource "aws_security_group" "non_compliant" {
-  name        = "non-compliant-sg"
-  description = "Non-compliant SG"
-  vpc_id      = aws_vpc.custom.id
-}
-
-resource "aws_vpc_security_group_ingress_rule" "https" {
-  security_group_id = aws_security_group.non_compliant.id
-  cidr_ipv4         = "0.0.0.0/0"
-  from_port         = 443
-  to_port           = 443
-  ip_protocol       = "tcp"
 }
