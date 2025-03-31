@@ -1,6 +1,7 @@
 module "database" {
   source       = "./modules/rds"
   project_name = "proj04-rds-module"
+  db_name      = "mydb"
   security_group_ids = [
     aws_security_group.compliant.id
   ]
@@ -9,7 +10,7 @@ module "database" {
     aws_subnet.private2.id
   ]
   credentials = {
-    username = "db-admin"
-    password = "P4ssw0rd!"
+    username = "dbadmin"
+    password = "YourSecurePassword2025!"
   }
 }

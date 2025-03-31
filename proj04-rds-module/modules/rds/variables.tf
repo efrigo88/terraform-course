@@ -9,6 +9,11 @@ variable "project_name" {
 ########################################################
 # DB config
 ########################################################
+variable "db_name" {
+  type        = string
+  description = "The name of the database"
+}
+
 variable "instance_class" {
   type        = string
   default     = "db.t3.micro"
@@ -49,6 +54,17 @@ variable "credentials" {
   })
   description = "The credentials of the RDS instance"
   sensitive   = true
+
+  validation {
+    condition     = can(regex("^[a-zA-Z][a-zA-Z0-9_]{0,62}$", var.credentials.username))
+    error_message = <<-EOT
+      The username must:
+      1. Start with a letter
+      2. Contain only letters, numbers, and underscores
+      3. Be between 1 and 63 characters long
+    EOT
+  }
+
   validation {
     condition     = can(regex("^[a-zA-Z0-9!@#$_%&*()+.<>?]{8,}$", var.credentials.password))
     error_message = <<-EOT
