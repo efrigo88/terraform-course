@@ -11,7 +11,6 @@ data "aws_ami" "ubuntu" {
     name   = "virtualization-type"
     values = ["hvm"]
   }
-
 }
 output "ubuntu_ami_data" {
   value = data.aws_ami.ubuntu.id
