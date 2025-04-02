@@ -15,6 +15,12 @@
 # }
 ########################
 
+# For this to work, the following environment variables must be set in Terraform Cloud:
+# These can be set as workspace variables or as variable sets if you need to share them across workspaces
+#
+# TFC_AWS_PROVIDER_AUTH = true
+# TFC_AWS_RUN_ROLE_ARN = arn:aws:iam::ACCOUNT_ID:role/terraform-cloud-automation-admin-example
+
 data "tls_certificate" "terraform_cloud" {
   url = "https://${var.tf_cloud_hostname}"
 }
